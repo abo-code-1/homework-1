@@ -1,13 +1,13 @@
 package com.narxoz.rpg.character;
 
-public class Warrior extends Character {
+public class Archer extends Character {
 
-    public Warrior(String name) {
+    public Archer(String name) {
         super(name);
-        this.health = 150;
-        this.mana = 30;
-        this.strength = 80;
-        this.intelligence = 20;
+        this.health = 100;
+        this.mana = 60;
+        this.strength = 50;
+        this.intelligence = 50;
     }
 
     @Override
@@ -21,11 +21,11 @@ public class Warrior extends Character {
 
     @Override
     public void useSpecialAbility() {
-        System.out.println(name + " uses BERSERKER RAGE! Strength temporarily increased!");
+        System.out.println(name + " uses PRECISION SHOT! Guaranteed critical hit!");
     }
 
     @Override
     public String getCharacterClass() {
-        return "Warrior";
+        return "Archer";
     }
 }

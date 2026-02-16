@@ -1,30 +1,77 @@
 package com.narxoz.rpg.character;
 
-/**
- * Base interface for all character types in the RPG system.
- *
- * TODO: Decide if this should be an interface or abstract class
- * Think: What's common to ALL characters?
- * Think: What varies between character types?
- *
- * Factory Method Pattern:
- * This represents the "Product" in the Factory Method pattern.
- * Different character classes (Warrior, Mage, Archer) are concrete products.
- */
-public interface Character {
+import com.narxoz.rpg.equipment.Weapon;
+import com.narxoz.rpg.equipment.Armor;
 
-    // TODO: Define common character behaviors
-    // Consider methods like:
-    // - String getName()
-    // - int getHealth()
-    // - int getMana()
-    // - int getStrength()
-    // - int getIntelligence()
-    // - void displayStats()
-    // - void useSpecialAbility()
+public abstract class Character {
 
-    // TODO: Think about equipment
-    // Should characters know about their equipped items?
-    // How will you handle equipping weapons and armor?
+    protected String name;
+    protected int health;
+    protected int mana;
+    protected int strength;
+    protected int intelligence;
+    protected Weapon equippedWeapon;
+    protected Armor equippedArmor;
 
+    public Character(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getHealth() {
+        return health;
+    }
+
+    public int getMana() {
+        return mana;
+    }
+
+    public int getStrength() {
+        return strength;
+    }
+
+    public int getIntelligence() {
+        return intelligence;
+    }
+
+    public Weapon getEquippedWeapon() {
+        return equippedWeapon;
+    }
+
+    public Armor getEquippedArmor() {
+        return equippedArmor;
+    }
+
+    public void equipWeapon(Weapon weapon) {
+        this.equippedWeapon = weapon;
+    }
+
+    public void equipArmor(Armor armor) {
+        this.equippedArmor = armor;
+    }
+
+    public void displayEquipment() {
+        System.out.println("--- Equipment ---");
+        if (equippedWeapon != null) {
+            System.out.println("Weapon: " + equippedWeapon.getWeaponInfo());
+            System.out.println("  Damage: " + equippedWeapon.getDamage());
+        } else {
+            System.out.println("Weapon: None");
+        }
+        if (equippedArmor != null) {
+            System.out.println("Armor: " + equippedArmor.getArmorInfo());
+            System.out.println("  Defense: " + equippedArmor.getDefense());
+        } else {
+            System.out.println("Armor: None");
+        }
+    }
+
+    public abstract void displayStats();
+
+    public abstract void useSpecialAbility();
+
+    public abstract String getCharacterClass();
 }
